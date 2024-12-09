@@ -142,14 +142,14 @@ finishInstall() {
         echo "$MACHINE" > "$STORAGE/windows.old"
       fi
     else
-      # Enable secure boot + TPM on manual installs as Win11 requires
+      # Disable secure boot + TPM on manual installs as Win11 requires
       if [[ "$MANUAL" == [Yy1]* ]] || [[ "$aborted" == [Yy1]* ]]; then
         if [[ "${DETECTED,,}" == "win11"* ]]; then
-          BOOT_MODE="windows_secure"
+          BOOT_MODE="windows_legacy"
           echo "$BOOT_MODE" > "$STORAGE/windows.mode"
         fi
       fi
-      # Enable secure boot on multi-socket systems to workaround freeze
+      # Disable secure boot on multi-socket systems to workaround freeze
       if [ -n "$SOCKETS" ] && [[ "$SOCKETS" != "1" ]]; then
         BOOT_MODE="windows_secure"
         echo "$BOOT_MODE" > "$STORAGE/windows.mode"
@@ -683,7 +683,7 @@ addDriver() {
     "win7x86"* ) folder="w7/x86" ;;
     "win7x64"* ) folder="w7/amd64" ;;
     "win81x64"* ) folder="w8.1/amd64" ;;
-    "win10x64"* ) folder="w10/amd64" ;;
+    "win10x86"* ) folder="w10/amd86" ;;
     "win11x64"* ) folder="w11/amd64" ;;
     "win2025"* ) folder="2k25/amd64" ;;
     "win2022"* ) folder="2k22/amd64" ;;
