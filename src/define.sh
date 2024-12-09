@@ -15,7 +15,7 @@ set -Eeuo pipefail
 : "${PASSWORD:=""}"
 
 MIRRORS=3
-PLATFORM="x64"
+PLATFORM="x32"
 
 parseVersion() {
 
@@ -427,7 +427,7 @@ printVersion() {
 
   if [ -z "$desc" ]; then
     desc="Windows"
-    [[ "${PLATFORM,,}" != "x64" ]] && desc+=" for ${PLATFORM}"
+    [[ "${PLATFORM,,}" != "x32" ]] && desc+=" for ${PLATFORM}"
   fi
 
   echo "$desc"
@@ -704,7 +704,7 @@ getMido() {
       size=6140975104
       sum="a6f470ca6d331eb353b815c043e327a347f594f37ff525f17764738fe812852e"
       ;;
-    "win10x64-enterprise-eval" )
+    "win10x32-enterprise-eval" )
       size=5550497792
       sum="ef7312733a9f5d7d51cfa04ac497671995674ca5e1058d5164d6028f0938d668"
       ;;
@@ -783,10 +783,10 @@ getLink1() {
       sum="4f59662a96fc1da48c1b415d6c369d08af55ddd64e8f1c84e0166d9e50405d7a"
       url="11/X23-81951_26100.1742.240906-0331.ge_release_svc_refresh_CLIENT_ENTERPRISES_OEM_x64FRE_en-us.iso"
       ;;
-    "win10x64" | "win10x64-enterprise" | "win10x64-enterprise-eval" )
+    "win10x86" | "win10x86-enterprise" | "win10x86-enterprise-eval" )
       size=5623582720
       sum="57371545d752a79a8a8b163b209c7028915da661de83516e06ddae913290a855"
-      url="10/en-us_windows_10_22h2_x64.iso"
+      url="https://software-download.microsoft.com/download/pr/19042.508.200927-1902.20h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x86FRE_en-us.iso"
       ;;
     "win10x64-iot" | "win10x64-enterprise-iot-eval" )
       size=4851668992
