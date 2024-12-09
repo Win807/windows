@@ -1,0 +1,25 @@
+services:
+  windows:
+    image: dockurr/windows
+    container_name: windows
+    environment:
+      VERSION: "https://software-download.microsoft.com/download/pr/19042.508.200927-1902.20h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x86FRE_en-us.iso"
+      REGION: en-GB
+      KEYBOARD: en-GB
+      DISK_SIZE: 120GB
+      RAM_SIZE: 4G
+      CPU_CORES: "4"
+      USERNAME: Ronak
+      PASSWORD: Ronak11
+    devices:
+      - /dev/kvm
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 8006:8006
+      - 3390:3389/tcp
+      - 3389:3389/udp
+    volumes:
+      - /mnt:/storage
+      - /workspaces/codespaces-blank/
+    stop_grace_period: 2m
